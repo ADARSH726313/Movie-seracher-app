@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movies Search Results</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      /* background-image: url('https://images.unsplash.com/photo-1567360425618-1594206637d2?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+      background-size: cover;
+      background-position: center;
+      background-color: #f8002f;
+background-image: linear-gradient(326deg, #f8002f 0%, #000c14 74%);
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    #searchTitle {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .card {
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card-img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      margin-bottom: 10px;
+    }
+
+    hr {
+      margin: 15px 0;
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="searchTitle" style="text-align: center;">Search Results </h1>
+
+
+    <% data["results"].forEach(element => {  %>
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="https://www.themoviedb.org/t/p/w1280<%=element["poster_path"]%>" alt="" class="img-fluid card-img" />
+          </div>
+  
+          <div class="col-md-8">
+            <div class="card-body">
+              <h2 class="card-title"><%= element["original_title"] %></h2>
+              <hr />
+              <p class="card-text"><%= element["overview"] %></p>
+              <hr />
+  
+              <p class="card-text">Date Published: <b><%= element["release_date"] %></b></p>
+              <p class="card-text">Total Votes: <b><%= element["vote_count"] %></b></p>
+              <p class="card-text">Rating: <b><%= element["vote_average"] %></b></p>
+              <p class="card-text">Original Language: <b><%= element["original_language"] %></b></p>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+     <% }); %>
+    
+   
+
+    <!-- Additional cards will be added dynamically for each movie -->
+  </div>
+</body>
+</html>
